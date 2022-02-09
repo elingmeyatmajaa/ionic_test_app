@@ -2,37 +2,14 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Blank</ion-title>
+        <ion-title>All Football</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ion-list>
-        <ion-item>
-          <ion-checkbox slot="start"></ion-checkbox>
-          <ion-label>
-            <h1>Create Idea</h1>
-            <ion-note>Run Idea By Brandy</ion-note>
-          </ion-label>
-          <ion-badge color="success" slot="end"> 5 Days </ion-badge>
-        </ion-item>
-      </ion-list>
-
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button @click="() => router.push('/new')">
-          <ion-icon :icon="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-
+        <ion-button shape="round" @click="() => router.push('/login')">Login</ion-button>
     </ion-content>
 
-    
   </ion-page>
 </template>
 
