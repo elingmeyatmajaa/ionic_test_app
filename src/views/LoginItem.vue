@@ -9,15 +9,17 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-       <ion-item>
-        <ion-label position="floating" type="password" id="password">Password</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-        <ion-button shape="round" @click="() => router.push('/dashboard')">Login</ion-button>
+      <form class="login-form">
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input v-model="email" type="text" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input v-model="password" type="password" required></ion-input>
+        </ion-item>
+        <ion-button expand="block" @click="() => router.push('/dashboard')">Login</ion-button>
+      </form>
     </ion-content>
   </ion-page>
 </template>
@@ -34,8 +36,7 @@ import {
 } from "@ionic/vue";
 
 import { defineComponent } from "vue";
-import { useRouter } from 'vue-router';
-
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "DashboardPage",
@@ -48,10 +49,10 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
   },
-  setup(){
-    return{
-      router:useRouter()
-    }
-  }
+  setup() {
+    return {
+      router: useRouter(),
+    };
+  },
 });
 </script>

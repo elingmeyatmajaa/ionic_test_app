@@ -2,12 +2,12 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>All Football</ion-title>
+        <ion-title>Home Page</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class>
-        <ion-button shape="round" @click="() => router.push('/login')">Login</ion-button>
+    <ion-content class="ion-padding">
+        <ion-button shape="round" @click="router.replace({ path:'/home' })">Login</ion-button>
     </ion-content>
 
   </ion-page>
@@ -22,7 +22,6 @@ import {
   IonToolbar,
 } from "@ionic/vue";
 
-import { add } from "ionicons/icons";
 import { useRouter } from 'vue-router';
 import { defineComponent } from "vue";
 
@@ -38,7 +37,6 @@ export default defineComponent({
   setup() {
     return {
     router:useRouter(),
-      add
     };
   },
 });

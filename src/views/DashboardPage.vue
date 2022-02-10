@@ -12,7 +12,6 @@
       
                 {{ tags }}  
       
-
     </ion-content>
   </ion-page>
 </template>
@@ -45,7 +44,7 @@ export default defineComponent({
   },
   data() {
       return {
-          tags: null
+          tags: []
       }
   },
  mounted () {
