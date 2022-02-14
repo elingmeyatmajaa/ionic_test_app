@@ -9,9 +9,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      
-                {{ tags }}  
-      
+      {{ tags }}
     </ion-content>
   </ion-page>
 </template>
@@ -44,14 +42,20 @@ export default defineComponent({
   },
   data() {
       return {
-          tags: []
+          tags: [], 
+          errors: []
       }
   },
- mounted () {
-    axios
-      .get('http://localhost:8000/api/tags')
-      .then(response => (this.tags = response))
-  }
+  
+  async created() {
+
+    try{
+      const response = await axios.get('http://localhost:8000/api/tags')
+      this.tags = response.data
+    } catch (e) {
+      this.errors.push(e)
+    }
+  },
 });
 
 
