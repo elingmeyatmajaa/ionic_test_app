@@ -3,6 +3,8 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
+
+
   /** primary **/
   --ion-background-color: #3eb489;
   --ion-color-primary: #3880ff;
@@ -233,5 +235,10 @@ http://ionicframework.com/docs/theming/ */
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
+  }
+
+  .signup {
+    --ion-text-color: #3eb489;
+
   }
 }

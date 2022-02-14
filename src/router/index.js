@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import Home from '@/views/Home.vue';
 import LoginItem from '@/views/LoginItem.vue';
-import DashboardPage from '@/views/DashboardPage.vue';
+import SignupPage from '@/views/SignupPage.vue';
+import RegisterPage from '@/views/RegisterPage.vue';
 
 
 const routes = [
@@ -20,10 +21,18 @@ const routes = [
     component: LoginItem,
   },
   {
-    path: '/dashboard',
-    name: 'DashboardPage',
-    component: DashboardPage,
-  }
+    path: '/signup',
+    name: 'SignupPage',
+    component: SignupPage,
+  },
+  {
+    path: '/register',
+    name: 'RegisterPage',
+    component: RegisterPage,
+  },
+  
+  
+
 ]
 
 const router = createRouter({
