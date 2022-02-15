@@ -1,73 +1,77 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Login Page</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <img width="375" height="360" src="@/assets/image/signup_1.png" />
+    <ion-content>
+      <ion-item>
+        <div >
+          <ion-label position="floating">Email</ion-label>
+          <ion-input 
+            type="email"
+            v-model="email"
+            required
+            @change="loginPost()"
+          ></ion-input>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            type="password"
+            v-model="password"
+            required
+            @change="loginPost()"
+          ></ion-input>
+        </div>
+      </ion-item>
+      <ion-button expand="block" @click="() => router.push('/login')"
+        >Login</ion-button>
 
-    <ion-content class="ion-padding">
-        <ion-button shape="round" @click="router.replace({ path:'/home' })">Login</ion-button>
+      
     </ion-content>
-
   </ion-page>
 </template>
 
 <script>
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/vue";
+import { IonContent, IonPage, IonInput } from "@ionic/vue";
+import axios from "axios";
 
-import { useRouter } from 'vue-router';
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: "HomePage",
+  name: "LoginPage",
   components: {
     IonContent,
-    IonHeader,
     IonPage,
-    IonTitle,
-    IonToolbar,
+    IonInput,
   },
+
   setup() {
     return {
-    router:useRouter(),
+      router: useRouter(),
     };
+  },
+
+  data() {
+    return {
+      email: "",
+      password: "",
+      errors: [],
+    };
+  },
+
+  methods: {
+    async loginPost() {
+      try {
+        await axios.post("http://localhost:8000/api/auth/login", {
+          email: this.email,
+          password: this.password,
+        });
+      } catch (e) {
+        this.errors.push(e);
+      }
+    },
   },
 });
 </script>
-
-<style scoped>
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>
