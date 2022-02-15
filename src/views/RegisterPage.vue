@@ -5,12 +5,12 @@
     <ion-content>
       <ion-item>
         <div>
-          <ion-label position="floating">Nama</ion-label>
+          <ion-label position="floating">Name</ion-label>
           <ion-input
-            type="nama"
-            v-model="nama"
+            type="text"
+            v-model="name"
             required
-            @change="loginPost()"
+            @change="registerPost()"
           ></ion-input>
         </div>
       </ion-item>
@@ -22,7 +22,7 @@
             type="email"
             v-model="email"
             required
-            @change="loginPost()"
+            @change="registerPost()"
           ></ion-input>
         </div>
       </ion-item>
@@ -33,25 +33,25 @@
             type="password"
             v-model="password"
             required
-            @change="loginPost()"
+            @change="registerPost()"
           ></ion-input>
         </div>
       </ion-item>
 
-       <ion-item>
+      <ion-item>
         <div>
           <ion-label position="floating">Confirm Password</ion-label>
           <ion-input
             type="password"
             v-model="confirm_password"
             required
-            @change="loginPost()"
+            @change="registerPost()"
           ></ion-input>
         </div>
       </ion-item>
 
-      <ion-button expand="block" @click="() => router.push('/login')"
-        >Login</ion-button
+      <ion-button expand="block" @click="() => router.push('/register')"
+        >Register</ion-button
       >
     </ion-content>
   </ion-page>
@@ -65,7 +65,7 @@ import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: "LoginItem",
+  name: "RegisterPage",
   components: {
     IonContent,
     IonPage,
@@ -80,18 +80,22 @@ export default defineComponent({
 
   data() {
     return {
+      name: "",
       email: "",
       password: "",
+      confirm_password: "",
       errors: [],
     };
   },
 
   methods: {
-    async loginPost() {
+    async registerPost() {
       try {
-        await axios.post("http://localhost:8000/api/auth/login", {
+        await axios.post("http://localhost:8000/api/auth/register", {
+          name: this.name,
           email: this.email,
           password: this.password,
+          confirm_password: this.confirm_password,
         });
       } catch (e) {
         this.errors.push(e);
